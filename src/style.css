@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes slowFloat {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-10px) translateX(6px); }
+}
+
+.glow-float-1 {
+  animation: slowFloat 14s ease-in-out infinite;
+}
+
+.glow-float-2 {
+  animation: slowFloat 18s ease-in-out infinite reverse;
+}
+
+@keyframes blobMorph {
+  0%, 100% { border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; transform: translate3d(0,0,0) scale(1); }
+  50% { border-radius: 58% 42% 37% 63% / 59% 56% 44% 41%; transform: translate3d(2%, -2%, 0) scale(1.05); }
+}
+
+.blob {
+  animation: blobMorph 16s ease-in-out infinite;
+  filter: blur(30px);
+}
+
+/* Marquee */
+.marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+@keyframes scrollX {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.333%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scrollX 40s linear infinite;
+}
+
+/* Matrix/Terminal style */
+@keyframes typewriter {
+  to { width: 100%; }
+}
+
+.terminal-line {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid rgba(56, 189, 248, 0.5);
+  animation: typewriter 1.5s steps(40, end), blink 0.75s step-end infinite;
+  width: 0;
+}
+
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: rgba(56, 189, 248, 0.5); }
+}
+
+.code-block {
+  font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
